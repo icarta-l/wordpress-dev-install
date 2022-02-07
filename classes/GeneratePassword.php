@@ -104,21 +104,21 @@ final class GeneratePassword
 
     private function addAnUpperCasedLetter(string $password) : string
     {
-        $password .= substr( self::UPPER_CASED_LETTERS, random_int(0, strlen(self::UPPER_CASED_LETTERS)), 1 );
+        $password .= substr( self::UPPER_CASED_LETTERS, random_int(0, strlen(self::UPPER_CASED_LETTERS) - 1), 1 );
         $this->number_of_upper_cased_letters++;
         return $password;
     }
 
     private function addALowerCasedLetter(string $password) : string
     {
-        $password .= substr( self::LOWER_CASED_LETTERS, random_int(0, strlen(self::LOWER_CASED_LETTERS)), 1 );
+        $password .= substr( self::LOWER_CASED_LETTERS, random_int(0, strlen(self::LOWER_CASED_LETTERS) - 1), 1 );
         $this->number_of_lower_cased_letters++;
         return $password;
     }
 
     private function addASymbol(string $password) : string
     {
-        $password .= substr( self::SYMBOLS_TO_USE, random_int(0, strlen(self::SYMBOLS_TO_USE)), 1 );
+        $password .= substr( self::SYMBOLS_TO_USE, random_int(0, strlen(self::SYMBOLS_TO_USE) - 1), 1 );
         $this->number_of_symbols++;
         return $password;
     }
