@@ -1,0 +1,28 @@
+services:
+  db:
+    image: mysql:latest
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: ${THEME_SLUG}
+      MYSQL_USER: site-builder
+      MYSQL_PASSWORD: test
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - ./wordpress:/var/www/html/
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: site-builder
+      WORDPRESS_DB_PASSWORD: test
+      WORDPRESS_DB_NAME: ${THEME_SLUG}
+volumes:
+  db_data: {}
+  wordpress_data: {}

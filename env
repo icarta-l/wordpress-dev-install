@@ -1,0 +1,10 @@
+URL=localhost:8000
+SITE_TITLE="change-site-title"
+ADMIN=noiza
+ADMIN_MAIL=idan@noiza.com
+PASSWORD=test
+THEME_SLUG=my-new-theme-slug
+THEME_NAME="my-new-theme-name"
+THEME_AUTHOR="Idan"
+#SASSIFY=--sassify
+#WOOCOMMERCE=--woocoomerce
