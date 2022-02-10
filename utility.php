@@ -58,10 +58,12 @@ function get_base_files() : void {
 }
 
 function copy_wordpress_files() : void {
+	global $file_successfully_copied;
+	global $success_message;
 	echo "Copying files ...";
 	while ($file_successfully_copied === false) {
 		sleep(10);
-		$logs = shell_exec('docker-compose logs');
+		$logs = (string) shell_exec('docker-compose logs');
 		if (strpos($logs, $success_message) !== false) {
 			echo "\033[92m done \033[0m \n";
 			$file_successfully_copied = true;
@@ -130,10 +132,10 @@ function download_and_rename_theme() : void {
 function get_replace_cases() : array {
 	return $replace_cases = [
 		"'_s'" => str_replace('_', '-', "'" . $_ENV['THEME_SLUG'] . "'"),
-		"_s_" => str_replace('-', '_', $_ENV['THEME_SLUG'] . "_"),
+		"_s_" => str_replace('-', '_', $_ENV['THEME_SLUG'] . "_") . "_",
 		" _s" => str_replace('-', '_', " " . $_ENV['THEME_SLUG']),
-		"_s-" => str_replace('_', '-', $_ENV['THEME_SLUG']),
-		"_S_" => str_replace('-', '_', strtoupper($_ENV['THEME_SLUG'])),
+		"_s-" => str_replace('_', '-', $_ENV['THEME_SLUG']) . "-",
+		"_S_" => str_replace('-', '_', strtoupper($_ENV['THEME_SLUG'])) . "_",
 		"\\\"_s\\\"" => str_replace('-', '_', "\\\"" . $_ENV['THEME_SLUG'] . "\\\"")
 	];
 }
