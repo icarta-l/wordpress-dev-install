@@ -8,8 +8,8 @@ $dotenv_values = [
 		"base" => "change-site-title"
 	],
 	"PASSWORD" => [
-		"ask" => "Your site password: \n",
-		"base" => "test"
+		"base" => "test",
+		"new" => (new GeneratePassword())->generateStrongPassword()
 	],
 	"THEME_SLUG" => [
 		"ask" => "Your site theme slug: \n",

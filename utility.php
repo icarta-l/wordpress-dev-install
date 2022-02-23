@@ -3,6 +3,9 @@
 function prompt_user() : void {
 	global $dotenv_values;
 	foreach ($dotenv_values as $key => $value) {
+		if (!isset($value['ask']) || empty($value['ask'])) {
+			continue;
+		}
 		$line = readline($value["ask"]);
 		$line = check_user_input($line, $value["ask"]);
 		$dotenv_values[$key]["new"] = $line;

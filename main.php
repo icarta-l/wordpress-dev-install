@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/classes/GeneratePassword.php';
 require 'global_variables.php';
 require 'utility.php';
 
