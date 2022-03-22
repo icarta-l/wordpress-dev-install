@@ -102,7 +102,7 @@ function get_docker_wp_cli() : string {
 }
 
 function install_wordpress() : void {
-	$query = 'wp core install --path="/var/www/html" --url="http://' . $_ENV['URL'] . '" --title="' . $_ENV['SITE_TITLE'] . '" --admin_user=' . $_ENV['ADMIN'] . ' --admin_password=' . $_ENV['PASSWORD'] . ' --admin_email=' . $_ENV['ADMIN_MAIL'];
+	$query = 'wp core install --path="/var/www/html" --url="http://' . $_ENV['URL'] . '" --title="' . $_ENV['SITE_TITLE'] . '" --admin_user=' . $_ENV['ADMIN'] . ' --admin_password="' . $_ENV['PASSWORD'] . '" --admin_email=' . $_ENV['ADMIN_MAIL'];
 
 	$wp_cli = get_docker_wp_cli();
 	$install_result = shell_exec($wp_cli . $query);
