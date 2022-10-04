@@ -14,9 +14,9 @@ final class GeneratePassword
     private int $number_of_symbols = 0;
     private int $number_of_numbers = 0;
 
-    public function generateStrongPassword (int $max_length = 19) : string
+    public function generateStrongPassword (int $max_length = 35) : string
     {
-        $password_length = random_int(15, $max_length);
+        $password_length = random_int(25, $max_length);
         $password = "";
         while (strlen($password) < $password_length) {
             $password = $this->getRandomTypeOfCharacter($password);
@@ -74,19 +74,19 @@ final class GeneratePassword
 
     private function checkNumberOfCharacterType(array $choices) : ?array
     {
-        if ($this->number_of_upper_cased_letters === 3) {
+        if ($this->number_of_upper_cased_letters >= 3) {
             array_splice($choices, array_search("upper_cased_letters", $choices), 1);
         }
 
-        if ($this->number_of_lower_cased_letters === 3) {
+        if ($this->number_of_lower_cased_letters >= 3) {
             array_splice($choices, array_search("lower_cased_letters", $choices), 1);
         }
 
-        if ($this->number_of_symbols === 3) {
+        if ($this->number_of_symbols >= 3) {
             array_splice($choices, array_search("symbols", $choices), 1);
         }
 
-        if ($this->number_of_numbers === 3) {
+        if ($this->number_of_numbers >= 3) {
             array_splice($choices, array_search("numbers", $choices), 1);
         }
 

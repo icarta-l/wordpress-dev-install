@@ -1,6 +1,6 @@
 services:
   db:
-    image: mysql:latest
+    image: mariadb:latest
     volumes:
       - ./db_data:/var/lib/mysql
     restart: always
@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: ${THEME_SLUG}
       MYSQL_USER: site-builder
       MYSQL_PASSWORD: test
+    cap_add:
+      - SYS_NICE
   wordpress:
     depends_on:
       - db

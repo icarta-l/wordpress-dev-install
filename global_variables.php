@@ -9,7 +9,7 @@ $dotenv_values = [
 	],
 	"PASSWORD" => [
 		"base" => "test",
-		"new" => (new GeneratePassword())->generateStrongPassword()
+		"new" => "\"" . (new GeneratePassword())->generateStrongPassword() . "\""
 	],
 	"THEME_SLUG" => [
 		"ask" => "Your site theme slug: \n",
@@ -23,7 +23,7 @@ $dotenv_values = [
 
 $last_wp_theme = 'twentytwentytwo';
 
-$noiza_theme = 'git@github.com:NoizaDev/_s.git';
+$noiza_theme = 'git@github.com:NoizaDev/starter_theme.git';
 
 $base_search_replace_cmd = 'find . -name "*.php" -print | xargs sed -i "" "s/';
 

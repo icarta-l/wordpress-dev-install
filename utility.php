@@ -84,7 +84,7 @@ function get_docker_wp_cli() : string {
 		if (strpos($match[2], 'wordpress') !== false) {
 			$wordpress_container_id = $match[1];
 		}
-		if (strpos($match[2], 'mysql') !== false) {
+		if (strpos($match[2], 'mariadb') !== false) {
 			$mysql_container_id = $match[1];
 		}
 	}
@@ -102,7 +102,9 @@ function get_docker_wp_cli() : string {
 }
 
 function install_wordpress() : void {
-	$query = 'wp core install --path="/var/www/html" --url="http://' . $_ENV['URL'] . '" --title="' . $_ENV['SITE_TITLE'] . '" --admin_user=' . $_ENV['ADMIN'] . ' --admin_password="' . $_ENV['PASSWORD'] . '" --admin_email=' . $_ENV['ADMIN_MAIL'];
+	$password = str_replace('"', '\"', $_ENV['PASSWORD']);
+	
+	$query = 'wp core install --path="/var/www/html" --url="http://' . $_ENV['URL'] . '" --title="' . $_ENV['SITE_TITLE'] . '" --admin_user=' . $_ENV['ADMIN'] . ' --admin_password="' . $password . '" --admin_email=' . $_ENV['ADMIN_MAIL'];
 
 	$wp_cli = get_docker_wp_cli();
 	$install_result = shell_exec($wp_cli . $query);
@@ -129,7 +131,7 @@ function download_and_rename_theme() : void {
 
 	echo $clone_noiza_theme_result;
 
-	rename('_s', $_ENV['THEME_SLUG']);
+	rename('starter_theme', $_ENV['THEME_SLUG']);
 }
 
 function get_replace_cases() : array {
