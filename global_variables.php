@@ -21,9 +21,9 @@ $dotenv_values = [
 	]
 ];
 
-$last_wp_theme = 'twentytwentytwo';
+$last_wp_theme = "twentytwentyfour";
 
-$noiza_theme = 'git@github.com:NoizaDev/starter_theme.git';
+$noiza_theme = "git@github.com:NoizaDev/starter_theme.git";
 
 $base_search_replace_cmd = 'find . -name "*.php" -print | xargs sed -i "" "s/';
 

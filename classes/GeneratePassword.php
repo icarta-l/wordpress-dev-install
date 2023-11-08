@@ -14,7 +14,7 @@ final class GeneratePassword
     private int $number_of_symbols = 0;
     private int $number_of_numbers = 0;
 
-    public function generateStrongPassword (int $max_length = 35) : string
+    public function generateStrongPassword(int $max_length = 35) : string
     {
         $password_length = random_int($max_length - 10, $max_length);
         $password = "";
